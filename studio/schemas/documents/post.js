@@ -10,6 +10,7 @@ export default {
       type: 'string',
       title: 'Title',
       description: 'Titles should be catchy, descriptive, and not too long'
+      
     },
     {
       name: 'slug',

@@ -1,5 +1,5 @@
 <style>
-	h1, figure, p {
+	/* h1, figure, p {
 		text-align: center;
 		margin: 0 auto;
 	}
@@ -29,7 +29,7 @@
 		h1 {
 			font-size: 4em;
 		}
-	}
+	} */
 </style>
 
 <svelte:head>
