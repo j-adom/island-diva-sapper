@@ -23,35 +23,39 @@
 </script>
 
 <script>
-	import Nav from '../components/Nav.svelte';
+	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition'
 	import Footer from '../components/Footer.svelte';
-	import Sidebar from '../components/Sidebar.svelte';
 	
 	export let siteInfo;
-	const links = siteInfo.links;
-	export let segment;
+	let visible = true
+	let	onLoad = false
 	
+	onMount(async () => {
+		setTimeout(() => onLoad = true, 50)
+		
+	})
+
 	let open = false;
 </script>
 
 <style>
-	:global(body) {
+	/* :global(body) {
 		padding: 0;
 	}
 	main {
 		background-color: white;
-	}
+	} */
+	/* #page{
+		display: none;
+	} */
 </style>
-
-
-<main >
-	<!-- <Sidebar {links} bind:open {segment} /> -->
-	<div class="flex flex-col md:flex-row ">
-		<Nav bind:sidebar={open} {...siteInfo.header} {segment} {links}/>
+{#if onLoad && visible}
+	<main  in:fade class="layout" id='page'>
 		<div>
 			<slot></slot>
 			<Footer {...siteInfo.footer} />
-		</div>
-	</div>
-	
-</main>
+		</div>	
+	</main>
+{/if}
+<div class="preloader"><img src="assets/images/25_125.gif" alt="" class="preloader-image"></div>

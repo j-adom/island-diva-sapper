@@ -18,16 +18,18 @@ export default {
       title: 'Main image'
     },
     {
-      name: 'excerpt',
-      type: 'excerptPortableText',
-      title: 'Excerpt',
+      name: 'intro',
+      type: 'bodyPortableText',
+      title: 'Introduction',
       description:
-        'This ends up on summary pages, on Google, when people share your post in social media.'
+        'This is the lead text on the homepage of the website'
     },
     {
       name: 'body',
       type: 'bodyPortableText',
-      title: 'Body'
+      title: 'About Me',
+      description:
+        'This is the About Me section text'
     }
   ],
   orderings: [

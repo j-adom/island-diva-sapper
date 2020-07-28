@@ -23,6 +23,15 @@ export default {
       options: {
         isHighlighted: true
       }
+    },
+    {
+      name: 'attribution',
+      type: 'string',
+      title: 'Attribution',
+      description: 'If you want to add image attribution put it here',
+      options: {
+        isHighlighted: true
+      }
     }
   ],
   preview: {

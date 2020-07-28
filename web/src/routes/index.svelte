@@ -1,62 +1,235 @@
+
+<script context="module">
+    import client from "../sanityClient";
+	import urlBuilder from '@sanity/image-url'
+	import BlockContent from "@movingbrands/svelte-portable-text";
+	import serializers from "../components/serializers";
+		
+	const urlFor = source => urlBuilder(client).image(source)
+	export async function preload({params}) {
+        const filter = `*[_id == "about"]`
+        const projection = `{
+				...,
+				body[]{
+					...,
+					children[]{
+						...,
+						_type == 'authorReference' => {
+							_type,
+							author->
+						}
+					}
+				},
+				mainImage{
+					...,
+					asset->
+				}
+			}`;
+		const query = filter + projection			
+		const result = await client
+			.fetch(query)
+			.catch(err => this.error(500,err));
+		const about = result[0]
+		return { about }
+	};
+
+</script>
+<script>
+	import { fade } from 'svelte/transition'
+
+	export let about
+	console.log(about)
+</script>
 <style>
-	/* h1, figure, p {
-		text-align: center;
-		margin: 0 auto;
-	}
-
-	h1 {
-		font-size: 2.8em;
-		text-transform: uppercase;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
-	}
-
-	figure {
-		margin: 0 0 1em 0;
-	}
-
-	svg {
-		width: 100%;
-		max-width: 400px;
-		margin: 0 0 1em 0;
-	}
-
-	p {
-		margin: 1em auto;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
-	} */
 </style>
 
 <svelte:head>
-	<title>Sapper project template</title>
+	<title></title>
 </svelte:head>
 
-<h1>Great success!</h1>
-
-<figure>
-	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svelte" x="0px" y="0px" viewBox="0 0 519 139" style="enable-background:new 0 0 519 139;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#159497;}
-	.st1{fill:#FFFFFF;}
-	.st2{fill:#4A4A55;}
-</style>
-<path id="back" class="st0" d="M110.2,28.4C99.8,13.5,79.3,9.1,64.4,18.6L38.4,35.2c-7.1,4.5-12,11.7-13.5,20  c-1.2,6.9-0.2,14,3.1,20.2c-2.2,3.4-3.8,7.2-4.5,11.2c-1.5,8.4,0.5,17.1,5.5,24.1c10.4,14.9,30.9,19.3,45.8,9.8l26.1-16.6  c7.1-4.5,12-11.7,13.5-20c1.2-6.9,0.1-14-3.1-20.2c2.2-3.4,3.8-7.2,4.5-11.2C117.2,44.1,115.2,35.5,110.2,28.4"/>
-<path id="front" class="st1" d="M61.9,112.2c-8.4,2.2-17.3-1.1-22.2-8.2c-3-4.2-4.2-9.4-3.3-14.5c0.1-0.8,0.4-1.6,0.6-2.4l0.5-1.5  l1.3,1c3.1,2.2,6.5,4,10.2,5.1l1,0.3l-0.1,1c-0.1,1.4,0.3,2.7,1.1,3.8c1.5,2.1,4.2,3.1,6.7,2.5c0.6-0.2,1.1-0.4,1.6-0.7l26-16.6  c1.3-0.8,2.2-2.1,2.4-3.6c0.3-1.5-0.1-3.1-1-4.4c-1.5-2.1-4.2-3.1-6.7-2.5c-0.6,0.2-1.1,0.4-1.6,0.7l-10,6.3c-1.6,1-3.4,1.8-5.3,2.3  c-8.4,2.2-17.3-1.1-22.2-8.2c-3-4.2-4.2-9.4-3.2-14.5c0.9-5,3.8-9.4,8.1-12.1L72,29.3c1.6-1,3.4-1.8,5.3-2.3  c8.4-2.2,17.3,1.1,22.2,8.2c3,4.2,4.2,9.4,3.3,14.5c-0.2,0.8-0.4,1.6-0.6,2.4l-0.5,1.5l-1.3-1c-3.1-2.3-6.5-4-10.2-5.1l-1-0.3l0.1-1  c0.1-1.4-0.3-2.8-1.1-3.9c-1.5-2.1-4.2-3.1-6.7-2.4c-0.6,0.2-1.1,0.4-1.6,0.7L53.8,57.3c-1.3,0.8-2.2,2.1-2.5,3.6  c-0.3,1.5,0.1,3.1,1,4.4c1.5,2.1,4.1,3.1,6.7,2.5c0.6-0.2,1.1-0.4,1.6-0.7l10-6.3c1.6-1,3.4-1.8,5.3-2.3c8.4-2.2,17.3,1.1,22.2,8.2  c3,4.2,4.2,9.4,3.3,14.5c-0.9,5-3.8,9.4-8.1,12.1l-26.1,16.6C65.6,110.9,63.8,111.7,61.9,112.2"/>
-<g>
-	<path class="st2" d="M150.8,85.9l8.3-3.1c2.5,5.4,7.3,9,13.7,9c6.5,0,10.8-3.2,10.8-9.2c0-6.5-6.5-8.8-13.5-11.2   c-8.3-3-17.4-6.2-17.4-17.1c0-8.4,6.9-15.6,19-15.6c10.1,0,16.4,5,18.4,11.8l-8.2,2.7c-1.4-3.4-5.1-6-10.9-6   c-5.7,0-9.1,2.6-9.1,7.2c0,4.9,5.5,6.8,12,9c8.6,3.2,18.8,6.8,18.8,19.2c0,11.4-8.9,17.8-20.4,17.8   C161.9,100.4,153.8,94.8,150.8,85.9z"/>
-	<path class="st2" d="M241,85.7h-24.1l-4.9,13.7h-9.2l21.5-59.6h9.1L255,99.4h-9.2L241,85.7z M231,57.6c-0.7-1.9-1.6-4.7-2-6.7   c-0.5,2-1.4,4.8-2,6.7l-7.3,20.3h18.6L231,57.6z"/>
-	<path class="st2" d="M268.3,39.8h23.9c14.6,0,19.7,9.3,19.7,18.2c0,8.3-5.5,18.2-19.7,18.2h-15.1v23.2h-8.9V39.8z M302.8,58   c0-4.2-2.1-9.7-10-9.7h-15.6v19.4h15.6C300.2,67.7,302.8,62.6,302.8,58z"/>
-	<path class="st2" d="M326,39.8h23.9c14.6,0,19.7,9.3,19.7,18.2c0,8.3-5.5,18.2-19.7,18.2h-15.1v23.2H326V39.8z M360.4,58   c0-4.2-2.1-9.7-10-9.7h-15.6v19.4h15.6C357.9,67.7,360.4,62.6,360.4,58z"/>
-	<path class="st2" d="M383.7,39.8h37v8.3h-28.1v16.4h18.1v8.3h-18.1V91h30v8.3h-38.8V39.8z"/>
-	<path class="st2" d="M438.7,39.8h25.1c14.6,0,19.2,8.7,19.2,17.6c0,6.9-3.8,14.5-12.9,16.9l12.3,25.1h-10.1L460.5,75h-12.9v24.4   h-8.9V39.8z M464,66.5c7.4,0,9.9-4.5,9.9-9.1c0-4.2-2-9.1-9.9-9.1h-16.4v18.2H464z"/>
-</g>
-</svg>
-	<figcaption>HIGH FIVE!</figcaption>
-</figure>
-
-<p><strong>Go to <a href="/blog">/blog</a> to see content loaded from <a href="https://www.sanity.io">Sanity</a></strong></p>
+<main class="body-editorial">
+    <div class="navbar-left">
+      <a href="#table-of-content"  data-w-id="116f901f-4fc8-fe4e-438d-a6ae58f561f5" class="menu-editorial w-inline-block">
+        <div class="menu-point-editorial"></div>
+        <div class="menu-point-editorial"></div>
+        <div class="menu-point-editorial"></div>
+        <div data-w-id="22f598bb-c8ac-b6d1-cb6b-27fa548e617a" class="hover-shape"></div>
+      </a>
+	  <a href="/" aria-current="page" class="w-inline-block w--current">
+		<img src="assets/images/logo-black.png" alt="logo" class="block md:hidden pt-2 w-20">
+	  </a>    
+	</div>
+    <div class="z-10">
+      <div class="section-hero-editorial">
+        <div class="w-layout-grid grid-editorial-intro">
+          <div class="hero-image-editorial"><img src="images/woman-in-white-long-sleeve-sitting-on-brown-chair-3778327.jpg" srcset="images/woman-in-white-long-sleeve-sitting-on-brown-chair-3778327-p-1080.jpeg 1080w, images/woman-in-white-long-sleeve-sitting-on-brown-chair-3778327-p-1600.jpeg 1600w, images/woman-in-white-long-sleeve-sitting-on-brown-chair-3778327.jpg 2000w" sizes="100vw" in:fade style="-webkit-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="" class="bg-image"></div>
+          <div class="section-editorial-intro">
+            <div>	
+              <div class="title-l fade-in-1st">Welcome to</div>
+              <div class="title-l fade-in-2nd">Danielle James.</div>
+            </div>
+            <div class="fade-in-3rd">
+				<BlockContent blocks = {about.intro} {serializers} />
+			</div>
+          </div>
+         </div>	
+        <div class="moving-image-shape bg-dark"></div>
+      </div>
+      <div class="section-under"> 
+        <div class="min-height-editorial">
+          <div class="sticky-editorial">
+            <div class="w-layout-grid grid-editorial-foreword">
+              <div class="section-large-editorial">
+                <div class="w-layout-grid grid-2x-editorial">
+                  <div id="w-node-a6ae58f56068-9e6961c7" class="title-l"><a href="#aboutme">About Me</a></div>
+				  <div id="w-node-a6ae58f5606a-9e6961c7" class="small-text"> 
+                    <div class="caption text-black" style="font-size: 16px">“I’m not living for myself. I’m living for my legacy.”</div>
+                    <div style="font-size: 16px"><em>- Danielle James</em></div>
+                  </div>
+                  <div id="w-node-a6ae58f56070-9e6961c7">
+					<BlockContent blocks = {about.body} {serializers} />
+				  </div>
+                </div>
+            </div>
+            <div class="section-large-padding-stretch">
+              <div class="image-size-stratch-featured"><img src="images/woman-in-brown-bikini-standing-on-brown-blanket-3778693.jpg" srcset="images/woman-in-brown-bikini-standing-on-brown-blanket-3778693-p-500.jpeg 500w, images/woman-in-brown-bikini-standing-on-brown-blanket-3778693.jpg 800w" sizes="(max-width: 479px) 100vw, (max-width: 767px) 95vw, (max-width: 991px) 92vw, 98vw" in:fade style="-webkit-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="" class="bg-image"></div>
+            </div>
+		  </div>
+        </div>
+      </div>
+      </div>
+      <div id="table-of-content" class="w-layout-grid grid-table-of-content">
+        <div class="section-editorial-menu first">
+          <div class="display-3">Table of</div>
+          <div class="display-3">Content</div>
+        </div>
+		<div class="section-editorial-menu">
+			<div class="display-4">
+		  	<a href="/portfolio/" class="hover-line-grow">Portfolio</a>
+		</div>
+        <div class="line-light-chapter"></div>
+		<ul role="list" class="italic w-list-unstyled">
+			<li>
+				<a href="/portfolio/journalism" class="hover-line-grow w-inline-block">
+				<div>Journalism</div>
+				<div class="hover-line black"></div>
+				</a>
+			</li>
+			<li>
+				<a href="/portfolio/redcarpet" class="hover-line-grow w-inline-block">
+				<div>Red Carpet</div>
+				<div class="hover-line black"></div>
+				</a>
+			</li>
+			<li>
+				<a href="https://www.hellobeautiful.com/wardgirls" class="hover-line-grow w-inline-block">
+				<div>Film Production - Ward Girls</div>
+				<div class="hover-line black"></div>
+				</a>
+			</li>
+			<li>
+				<a href="/portfolio/interviews" class="hover-line-grow w-inline-block">
+				<div>Video Interviews</div>
+				<div class="hover-line black"></div>
+				</a>
+			</li>
+			<li>
+				<a href="/portfolio/modeling" class="hover-line-grow w-inline-block">
+				<div>Modeling</div>
+				<div class="hover-line black"></div>
+				</a>
+			</li>
+			<li>
+				<a href="/portfolio/hosting" class="hover-line-grow w-inline-block">
+				<div>Hosting</div>
+				<div class="hover-line black"></div>
+				</a>
+			</li>
+			<li>
+				<a href="/portfolio/events" class="hover-line-grow w-inline-block">
+				<div>Events</div>
+				<div class="hover-line black"></div>
+				</a>
+			</li>
+			<li>
+				<a href="/portfolio/speaking" class="hover-line-grow w-inline-block">
+				<div>Speaking Engagements</div>
+				<div class="hover-line black"></div>
+				</a>
+			</li>
+		</ul>
+    </div>
+	<div class="section-editorial-menu">
+		<div class="display-4">
+		<a href="/consulting/" class="hover-line-grow">Consulting</a>
+	</div>
+	<div class="line-light-chapter"></div>
+	<ul role="list" class="italic w-list-unstyled">
+		<li>
+		<a href="/consulting/services" class="hover-line-grow w-inline-block">
+			<div>Consulting Services</div>
+			<div class="hover-line black"></div>
+		</a>
+		</li>
+		<li>
+		<a href="/consulting/brand" class="hover-line-grow w-inline-block">
+			<div>Brand Consulting</div>
+			<div class="hover-line black"></div>
+		</a>
+		</li>
+		<li>
+		<a href="/consulting/image" class="hover-line-grow w-inline-block">
+			<div>Image/Style Consulting</div>
+			<div class="hover-line black"></div>
+		</a>
+		</li>
+	</ul>
+      </div>
+        <div class="section-editorial-menu">
+           <div class="display-4">
+		  	<a href="/brandwork/" class="hover-line-grow">Brand Work</a>
+		  </div>
+          <div class="line-light-chapter"></div>
+          <!-- <div class="editorial-chapter">Shopping</div> -->
+          <ul role="list" class="italic w-list-unstyled">
+			<!-- <li>
+              <a href="/consulting/image" class="hover-line-grow w-inline-block">
+                <div>Image/Style Consulting</div>
+                <div class="hover-line black"></div>
+              </a>
+            </li>
+            -->
+          </ul>
+        </div>
+        <div class="section-editorial-menu">
+           <div class="display-4">
+		  	<a href="/press/" class="hover-line-grow">Press</a>
+		  </div>
+          <div class="line-light-chapter"></div>
+          <!-- <div class="editorial-chapter">Shopping</div> -->
+          <ul role="list" class="italic w-list-unstyled">
+			<!-- <li>
+              <a href="/consulting/image" class="hover-line-grow w-inline-block">
+                <div>Image/Style Consulting</div>
+                <div class="hover-line black"></div>
+              </a>
+            </li>
+            -->
+          </ul>
+        </div>
+		<div class="section-editorial-menu">
+          <div class="display-4">
+		  	<a href="/contactme/" class="hover-line-grow">Contact Me</a>
+		  </div>
+          <div class="line-light-chapter"></div>
+          <ul role="list" class="italic w-list-unstyled">
+			<li>
+              <a href="/contactme/" class="hover-line-grow w-inline-block">
+                <div></div>
+                <div class="hover-line black"></div>
+              </a>
+            </li>
+           
+          </ul>
+      </div>
+</main>

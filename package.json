@@ -14,10 +14,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@sanity/cli": "^1.149.13",
-    "lerna": "^3.22.0"
+    "@beyonk/svelte-carousel": "^2.8.0",
+    "@sanity/cli": "^1.149.18",
+    "lerna": "^3.22.1",
+    "svelte-feather-icons": "^3.2.2"
   },
   "dependencies": {
-    "smelte": "^1.0.12"
+    "@movingbrands/svelte-portable-text": "0.0.11",
+    "rollup": "^2.22.2",
+    "rollup-plugin-css-only": "^2.1.0"
   }
 }

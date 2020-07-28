@@ -11,6 +11,11 @@ import post from './documents/post'
 import siteSettings from './documents/siteSettings'
 import socialLinks from './documents/socialLinks'
 import about from './documents/about'
+import articleLink from './documents/articleLink'
+import imageGallery from './documents/imageGallery'
+import publication from './documents/publication'
+
+
 
 
 // Object types
@@ -39,7 +44,10 @@ export default createSchema({
     authorReference,
     bodyPortableText,
     bioPortableText,
-    excerptPortableText
+    excerptPortableText,
+    articleLink,
+    publication,
+    imageGallery
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
