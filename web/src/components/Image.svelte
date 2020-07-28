@@ -1,7 +1,7 @@
 <script>
 	import 'lazysizes'
 
-  export let url;
+  	export let url;
 	export let aspectRatio
 	export let placeholder
 	export let src

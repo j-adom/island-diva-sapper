@@ -5,7 +5,7 @@
   "version": "0.0.15",
   "scripts": {
     "dev": "sapper dev",
-    "build": "npm run build:tailwindcss && sapper export",
+    "build": "npm run build:tailwindcss && sapper export && mv ./__sapper__/export ./public",
     "export": "npm run build:tailwindcss && sapper export",
     "start": "node __sapper__/build",
     "cy:run": "cypress run",
@@ -19,6 +19,7 @@
     "@sanity/client": "^1.149.18",
     "@sanity/image-url": "^0.140.19",
     "compression": "^1.7.4",
+    "lazysizes": "^5.2.2",
     "groq": "^0.147.8",
     "polka": "^1.0.0-next.11",
     "sirv": "^0.4.6",
