@@ -5,7 +5,7 @@
   "version": "0.0.15",
   "scripts": {
     "dev": "sapper dev",
-    "build": "npm run build:tailwindcss && sapper build",
+    "build": "npm run build:tailwindcss && sapper export",
     "export": "npm run build:tailwindcss && sapper export",
     "start": "node __sapper__/build",
     "cy:run": "cypress run",
