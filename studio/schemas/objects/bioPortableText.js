@@ -1,7 +1,7 @@
 export default {
   name: 'bioPortableText',
   type: 'array',
-  title: 'Excerpt',
+  title: 'Bio',
   of: [
     {
       type: 'block',

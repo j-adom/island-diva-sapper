@@ -15,18 +15,23 @@ export default {
     {
       name: 'mainImage',
       type: 'mainImage',
-      title: 'Main image'
+      title: 'Main Image'
+    },
+    {
+      name: 'secondImage',
+      type: 'mainImage',
+      title: 'Second Image'
     },
     {
       name: 'intro',
-      type: 'bodyPortableText',
+      type: 'bioPortableText',
       title: 'Introduction',
       description:
         'This is the lead text on the homepage of the website'
     },
     {
       name: 'body',
-      type: 'bodyPortableText',
+      type: 'bioPortableText',
       title: 'About Me',
       description:
         'This is the About Me section text'

@@ -1,41 +1,32 @@
 
 <script context="module">
     import client from "../sanityClient";
-	import urlBuilder from '@sanity/image-url'
+	import urlFor from "../sanityImageUrlBuilder"
 	import BlockContent from "@movingbrands/svelte-portable-text";
 	import serializers from "../components/serializers";
-		
-	const urlFor = source => urlBuilder(client).image(source)
+	import generateImage from "../generateImage"		
+
 	export async function preload({params}) {
-        const filter = `*[_id == "about"]`
+        const filter = `*[_id == "about"][0]`
         const projection = `{
 				...,
-				body[]{
-					...,
-					children[]{
-						...,
-						_type == 'authorReference' => {
-							_type,
-							author->
-						}
-					}
-				},
 				mainImage{
 					...,
 					asset->
 				}
 			}`;
 		const query = filter + projection			
-		const result = await client
+		const about = await client
 			.fetch(query)
 			.catch(err => this.error(500,err));
-		const about = result[0]
+		about.mainImage = generateImage(about.mainImage)
 		return { about }
 	};
 
 </script>
 <script>
 	import { fade } from 'svelte/transition'
+	import Image from '../components/Image.svelte'
 
 	export let about
 	console.log(about)
@@ -44,7 +35,7 @@
 </style>
 
 <svelte:head>
-	<title></title>
+	<title>{about.title}</title>
 </svelte:head>
 
 <main class="body-editorial">
@@ -56,19 +47,21 @@
         <div data-w-id="22f598bb-c8ac-b6d1-cb6b-27fa548e617a" class="hover-shape"></div>
       </a>
 	  <a href="/" aria-current="page" class="w-inline-block w--current">
-		<img src="assets/images/logo-black.png" alt="logo" class="block md:hidden pt-2 w-20">
+		<img src="assets/images/logo-black.png" alt="logo" class="block p-2 w-24">
 	  </a>    
 	</div>
     <div class="z-10">
-      <div class="section-hero-editorial">
+      <div class="section-hero-editorial border-b-1 border-red-400">
         <div class="w-layout-grid grid-editorial-intro">
-          <div class="hero-image-editorial"><img src="images/woman-in-white-long-sleeve-sitting-on-brown-chair-3778327.jpg" srcset="images/woman-in-white-long-sleeve-sitting-on-brown-chair-3778327-p-1080.jpeg 1080w, images/woman-in-white-long-sleeve-sitting-on-brown-chair-3778327-p-1600.jpeg 1600w, images/woman-in-white-long-sleeve-sitting-on-brown-chair-3778327.jpg 2000w" sizes="100vw" in:fade style="-webkit-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="" class="bg-image"></div>
-          <div class="section-editorial-intro">
+          <div class="hero-image-editorial">
+			<Image {...about.mainImage} />
+		  </div>
+          <div class="section-editorial-intro" style="background-color: rgb(233, 225, 218)">
             <div>	
               <div class="title-l fade-in-1st">Welcome to</div>
               <div class="title-l fade-in-2nd">Danielle James.</div>
             </div>
-            <div class="fade-in-3rd">
+            <div class="fade-in-3rd text-base">
 				<BlockContent blocks = {about.intro} {serializers} />
 			</div>
           </div>
@@ -83,7 +76,9 @@
                 <div class="w-layout-grid grid-2x-editorial">
                   <div id="w-node-a6ae58f56068-9e6961c7" class="title-l"><a href="#aboutme">About Me</a></div>
 				  <div id="w-node-a6ae58f5606a-9e6961c7" class="small-text"> 
-                    <div class="caption text-black" style="font-size: 16px">“I’m not living for myself. I’m living for my legacy.”</div>
+                    <div class="caption text-black" style="font-size: 16px">
+						“I’m not living for myself. I’m living for my legacy.”
+					</div>
                     <div style="font-size: 16px"><em>- Danielle James</em></div>
                   </div>
                   <div id="w-node-a6ae58f56070-9e6961c7">
@@ -96,7 +91,7 @@
             </div>
 		  </div>
         </div>
-      </div>
+		</div>
       </div>
       <div id="table-of-content" class="w-layout-grid grid-table-of-content">
         <div class="section-editorial-menu first">

@@ -1,7 +1,7 @@
 <script>
 	import 'lazysizes'
 
-  	export let url;
+  	// export let url;
 	export let aspectRatio
 	export let placeholder
 	export let src
@@ -25,17 +25,21 @@
 
 	img {
 		position: absolute;
-		top: 0;
-		left: 0;
+		left: 0%;
+		top: 0%;
+		right: 0%;
+		bottom: 0%;
+		z-index: 0;
 		width: 100%;
 		height: 100%;
+		-o-object-fit: cover;
+		object-fit: cover;
 	}
 </style>
 
-<div class="wrapper">
-	<div class="aspect-ratio-holder" style="--pb:{padding_bottom_percentage}" />
-  <a href={url}>
-    <img
+<div class="wrapper w-full h-full">
+	<div class="aspect-ratio-holder" style="--pb:{padding_bottom_percentage}" /> 
+	<img
       class="lazyload"
       {src}
       srcset={placeholder}
@@ -43,7 +47,7 @@
       {sizes}
       {alt}
     />
-  </a>
+ 
 	
 
 	<noscript>

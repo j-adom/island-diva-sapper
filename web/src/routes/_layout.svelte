@@ -54,7 +54,7 @@
 	<main  in:fade class="layout" id='page'>
 		<div>
 			<slot></slot>
-			<Footer {...siteInfo.footer} />
+			<Footer links={siteInfo.links} />
 		</div>	
 	</main>
 {/if}
