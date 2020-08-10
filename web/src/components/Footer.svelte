@@ -6,7 +6,7 @@
     import { faLinkedin } from '@fortawesome/free-brands-svg-icons/';
     export let links;
     
-    const socialLinkds = []
+    const socialLinks = []
     links.forEach(link => {
       socialLinks.push(
         {title: link.title, comp}
