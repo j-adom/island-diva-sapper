@@ -9,13 +9,14 @@
     const socialLinks = []
     links.forEach(link => {
       socialLinks.push(
-        {title: link.title, comp}
+        {title: link.title, icon: eval(link.icon), url: link.url}
       )
     });
     
     
     
     console.log(links[0].icon)
+    console.log(socialLinks[0])
 </script>
 
 <footer class="">
@@ -75,18 +76,12 @@
       </div>
       <div id="w-node-06ea38fffae6-38fffad6" class="content">
         <div class="w-layout-grid social-icons-grid">
-          <!-- {#each links as link} -->
-            <a href={links[0].url} target="_blank" class="w-inline-block">
-              <Icon data={links.icon} scale="3"/>
+          {#each socialLinks as link}
+            <a href={link.url} target="_blank" class="w-inline-block">
+              <Icon data={link.icon} scale="2"/>
             </a>
-          <!-- {/each} -->
-          <a href={links[0].url} target="_blank" class="w-inline-block">
-            <img src="https://uploads-ssl.webflow.com/5e0b2bcfeae07e08477d57f5/5e493847baff8f1526ab8cbd_instagram-white.svg" alt="" class="icon-20px">
-          </a>
-          <a href="https://www.instagram.com" target="_blank" class="w-inline-block">
-            <img src="https://uploads-ssl.webflow.com/5e0b2bcfeae07e08477d57f5/5e493898a90a2c31d73d2447_facebook-white.svg" alt="" class="icon-20px"></a>
-          <a href="https://www.instagram.com" target="_blank" class="w-inline-block">
-            <img src="https://uploads-ssl.webflow.com/5e0b2bcfeae07e08477d57f5/5e4938ab353d45b1ebb30202_twitter-white.svg" alt="" class="icon-20px"></a><a data-w-id="78059a4b-4334-4a3a-2423-1de031a59390" href="https://www.instagram.com" target="_blank" class="w-inline-block"><img src="https://uploads-ssl.webflow.com/5e0b2bcfeae07e08477d57f5/5e493850353d453eb1b2fef3_pinterest-white.svg" alt="" class="icon-20px"></a></div>
+          {/each}
+        </div>
       </div>
       <div id="w-node-9b8b498930b5-38fffad6">
         <div>2020, Danielle James</div>
