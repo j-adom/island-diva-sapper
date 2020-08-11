@@ -21,6 +21,13 @@ export default {
             }
         },
         {
+            name: 'intro',
+            type: 'bioPortableText',
+            title: 'Introduction',
+            description:
+              'This is the lead text on the homepage of the website'
+          },
+        {
             "type": "array",
             "name": "photos",
             "title": "Gallery Photos",

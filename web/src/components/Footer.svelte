@@ -12,11 +12,7 @@
         {title: link.title, icon: eval(link.icon), url: link.url}
       )
     });
-    
-    
-    
-    console.log(links[0].icon)
-    console.log(socialLinks[0])
+
 </script>
 
 <footer class="">
