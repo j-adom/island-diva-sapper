@@ -19,7 +19,7 @@
               <div class="hover-shape black"></div>
             </a>
           </div>
-          <a data-w-id="a73b22f2-97c2-44e4-d79c-54fdca8e2fec" href="#" class="menu-button w-inline-block">
+          <a data-w-id="a73b22f2-97c2-44e4-d79c-54fdca8e2fec" href="/" class="menu-button w-inline-block">
             <div class="menu-circle"></div><img src="images/drag_handle-24px.svg" alt=""></a>
         </div>
       </div>

@@ -4,12 +4,36 @@
     import { faInstagram } from '@fortawesome/free-brands-svg-icons/';
     import { faFacebook } from '@fortawesome/free-brands-svg-icons/';
     import { faLinkedin } from '@fortawesome/free-brands-svg-icons/';
+    import { faShare } from '@fortawesome/free-solid-svg-icons'
+
     export let links;
-    
+    export let description;
+    function varIcon (icon){
+      return Function('"use strict";return ('+ icon +')')();
+    }
+
     const socialLinks = []
     links.forEach(link => {
+      let fa
+      switch (link.icon) {
+        case 'faTwitter':
+          fa = faTwitter
+          break;
+        case 'faFacebook':
+            fa = faFacebook
+            break;
+        case 'faLinkedin':
+          fa = faLinkedin
+          break;    
+        case 'faInstagram':
+          fa = faInstagram
+          break;
+        default:
+          fa = faShare
+          break;
+      }
       socialLinks.push(
-        {title: link.title, icon: eval(link.icon), url: link.url}
+        {title: link.title, icon: fa, url: link.url}
       )
     });
 
@@ -31,7 +55,7 @@
       </div>
       <div id="w-node-06ea38fffad7-38fffad6" class="container-small left">
         <div class="w-layout-grid thumb-info-large-grid"><img src="assets/images/logo.png" alt="" class="logo-128px">
-          <div class="lead">Blogos celebrates, inspires and supports the creative community. Launched in 2009, we love to explore the very best creativity and offer interviews, tips and ideas to help you succeed.</div>
+          <div class="lead">{description}</div>
         </div>
       </div>
       <div id="w-node-06ea38fffadd-38fffad6" class="content">

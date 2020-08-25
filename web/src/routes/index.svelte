@@ -4,13 +4,17 @@
 	import urlFor from "../sanityImageUrlBuilder"
 	import BlockContent from "@movingbrands/svelte-portable-text";
 	import serializers from "../components/serializers";
-	import generateImage from "../generateImage"		
+	import generateImage from "../generateImage";		
 
 	export async function preload({params}) {
         const filter = `*[_id == "about"][0]`
         const projection = `{
 				...,
 				mainImage{
+					...,
+					asset->
+				},
+				secondImage{
 					...,
 					asset->
 				}
@@ -20,6 +24,7 @@
 			.fetch(query)
 			.catch(err => this.error(500,err));
 		about.mainImage = generateImage(about.mainImage)
+		about.secondImage = generateImage(about.secondImage)
 		return { about }
 	};
 
@@ -87,7 +92,10 @@
                 </div>
             </div>
             <div class="section-large-padding-stretch">
-              <div class="image-size-stratch-featured"><img src="images/woman-in-brown-bikini-standing-on-brown-blanket-3778693.jpg" srcset="images/woman-in-brown-bikini-standing-on-brown-blanket-3778693-p-500.jpeg 500w, images/woman-in-brown-bikini-standing-on-brown-blanket-3778693.jpg 800w" sizes="(max-width: 479px) 100vw, (max-width: 767px) 95vw, (max-width: 991px) 92vw, 98vw" in:fade style="-webkit-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="" class="bg-image"></div>
+              <div class="image-size-stratch-featured">
+				<Image {...about.secondImage} />
+				  <!-- <img src="images/woman-in-brown-bikini-standing-on-brown-blanket-3778693.jpg" srcset="images/woman-in-brown-bikini-standing-on-brown-blanket-3778693-p-500.jpeg 500w, images/woman-in-brown-bikini-standing-on-brown-blanket-3778693.jpg 800w" sizes="(max-width: 479px) 100vw, (max-width: 767px) 95vw, (max-width: 991px) 92vw, 98vw" in:fade style="-webkit-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="" class="bg-image"> -->
+			  </div>
             </div>
 		  </div>
         </div>
