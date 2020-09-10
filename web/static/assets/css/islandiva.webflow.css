@@ -5069,6 +5069,7 @@ blockquote {
   }
   .section-hero-editorial {
     min-height: 70vh;
+    max-height: 100vh
   }
   .last-element-editorial {
     margin-bottom: 40px;

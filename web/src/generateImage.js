@@ -11,7 +11,7 @@ function generateImage(image) {
 		// else, just set aspectRatio equal to the original image’s
 		aspectRatio = image.asset.metadata.dimensions.aspectRatio
 	}
-
+	const caption = image.caption
 	// LQIP
 	const placeholder = image.asset.metadata.lqip
 
@@ -35,7 +35,8 @@ function generateImage(image) {
 		placeholder,
 		src,
         srcset,
-        alt
+		alt,
+		caption
 	}
 }
 

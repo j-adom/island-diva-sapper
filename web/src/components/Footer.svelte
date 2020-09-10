@@ -43,14 +43,13 @@
     <div class="grid grid-col footer-black-newsletter">
        <div id="w-node-53b7af924361-38fffad6" class="w-layout-grid grid-subscribe-footer">
         <div id="w-node-53b7af924362-38fffad6" class="title-s">Sign up for my latest news and content<br></div>
-        <div id="w-node-53b7af924365-38fffad6" class="form-block w-form">
-          <form id="email-form" name="email-form" data-name="Email Form" class="form-horizontal"><input type="email" class="text-field-filled w-input" maxlength="256" name="email-3" data-name="Email 3" placeholder="Enter your email address" id="email-3" required=""><input type="submit" value="Sign up" data-wait="Please wait..." class="submit-button-outline w-button"></form>
-          <div class="w-form-done">
-            <div>Thank you! Your submission has been received!</div>
-          </div>
-          <div class="w-form-fail">
-            <div>Oops! Something went wrong while submitting the form.</div>
-          </div>
+        <div id="mc_embed_signup" class="form-block mb-3 self-center">
+          <form action="https://welcometodaniellejames.us17.list-manage.com/subscribe/post?u=8bd3a7e9dc5fdd767ac50727a&amp;id=f7fb26768a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="form-horizontal validate" target="_blank" novalidate>
+            <input type="email" class="text-field-filled w-input required email" maxlength="256" name="EMAIL" value="" data-name="Email 3" placeholder="Enter your email address" id="mce-EMAIL">
+          
+            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_8bd3a7e9dc5fdd767ac50727a_f7fb26768a" tabindex="-1" value=""></div>
+            <input type="submit" value="Sign up" name='subscribe' data-wait="Please wait..." id="mc-embedded-subscribe" class="submit-button-outline w-button" required>
+          </form>
         </div>
       </div>
       <div id="w-node-06ea38fffad7-38fffad6" class="container-small left">
@@ -68,8 +67,8 @@
             <div>About</div>
             <div class="hover-line"></div>
           </a>
-          <a id="w-node-ab12b8fb9434-38fffad6" href="contact/contact-1.html" class="link-white w-inline-block">
-            <div>Contact</div>
+          <a id="w-node-ab12b8fb9434-38fffad6" href="portfolio/journalism" class="link-white w-inline-block">
+            <div>Journalism</div>
             <div class="hover-line"></div>
           </a>
           <a id="w-node-25b34c6b2575-38fffad6" href="privacy-policy.html" class="link-white w-inline-block">
@@ -80,18 +79,7 @@
             <div>Style guide</div>
             <div class="hover-line"></div>
           </a>
-          <a id="w-node-6c5b174e22bd-38fffad6" href="template/instructions.html" class="link-white w-inline-block">
-            <div>Instructions</div>
-            <div class="hover-line"></div>
-          </a>
-          <a id="w-node-f3d4b3d92777-38fffad6" href="template/licensing.html" class="link-white w-inline-block">
-            <div>Image license</div>
-            <div class="hover-line"></div>
-          </a>
-          <a id="w-node-38a96b75698c-38fffad6" href="template/changelog.html" class="link-white w-inline-block">
-            <div>Changelog</div>
-            <div class="hover-line"></div>
-          </a>
+
         </div>
       </div>
       <div id="w-node-06ea38fffae6-38fffad6" class="content">
@@ -114,3 +102,4 @@
 <style>
 
 </style>
+

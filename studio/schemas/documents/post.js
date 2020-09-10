@@ -29,6 +29,11 @@ export default {
       description: 'This can be used to schedule post for publishing'
     },
     {
+      title: 'Is this a featured post?',
+      name: 'featured',
+      type: 'boolean'
+    },
+    {
       name: 'mainImage',
       type: 'mainImage',
       title: 'Main image'
@@ -46,7 +51,8 @@ export default {
       type: 'array',
       of: [
         {
-          type: 'authorReference'
+          type: 'reference',
+          to: {type: 'author'}
         }
       ]
     },
@@ -67,6 +73,11 @@ export default {
       name: 'body',
       type: 'bodyPortableText',
       title: 'Body'
+    },
+    {
+      name: 'body2',
+      type: 'bodyPortableText',
+      title: 'Body 2'
     }
   ],
   orderings: [

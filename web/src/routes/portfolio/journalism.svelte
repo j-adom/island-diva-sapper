@@ -31,6 +31,7 @@
     export let articleLinks
 </script>
 
+
 <Header />
 
 <div class="border-white-on-page">
@@ -56,3 +57,8 @@
 
 <ArticleCarousel {articleLinks} />
 
+<style>
+    .content-section{
+        background-color: #fafaf3;
+    }
+</style>

@@ -53,6 +53,7 @@
 		height: 100%;
 		color: #fff;
 		border: 2px solid #fff;
-		border-radius: 32px;
-	}
+        border-radius: 32px;
+        background-color: #fac3c5;
+    }
 </style>

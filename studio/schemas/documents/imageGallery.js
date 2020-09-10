@@ -16,7 +16,7 @@ export default {
             title: 'Slug',
             description: 'Some frontends will require a slug to be set to be able to show the person',
             options: {
-                source: 'name',
+                source: 'title',
                 maxLength: 96
             }
         },

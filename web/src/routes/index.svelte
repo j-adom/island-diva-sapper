@@ -1,4 +1,3 @@
-
 <script context="module">
     import client from "../sanityClient";
 	import urlFor from "../sanityImageUrlBuilder"
@@ -34,7 +33,6 @@
 	import Image from '../components/Image.svelte'
 
 	export let about
-	console.log(about)
 </script>
 <style>
 </style>
@@ -56,10 +54,10 @@
 	  </a>    
 	</div>
     <div class="z-10">
-      <div class="section-hero-editorial border-b-1 border-red-400">
+      <div class="section-hero-editorial">
         <div class="w-layout-grid grid-editorial-intro">
-          <div class="hero-image-editorial">
-			<Image {...about.mainImage} />
+          <div class="hero-image-editorial max-h-screen">
+							<Image {...about.mainImage} />
 		  </div>
           <div class="section-editorial-intro" style="background-color: rgb(233, 225, 218)">
             <div>	
@@ -91,8 +89,8 @@
 				  </div>
                 </div>
             </div>
-            <div class="section-large-padding-stretch">
-              <div class="image-size-stratch-featured">
+            <div class="section-large-padding-stretch max-h-screen">
+              <div class="image-size-stratch-featured mx-10">
 				<Image {...about.secondImage} />
 				  <!-- <img src="images/woman-in-brown-bikini-standing-on-brown-blanket-3778693.jpg" srcset="images/woman-in-brown-bikini-standing-on-brown-blanket-3778693-p-500.jpeg 500w, images/woman-in-brown-bikini-standing-on-brown-blanket-3778693.jpg 800w" sizes="(max-width: 479px) 100vw, (max-width: 767px) 95vw, (max-width: 991px) 92vw, 98vw" in:fade style="-webkit-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="" class="bg-image"> -->
 			  </div>
@@ -206,7 +204,7 @@
         </div>
         <div class="section-editorial-menu">
            <div class="display-4">
-		  	<a href="/press/" class="hover-line-grow">Press</a>
+		  	<a href="/blog/" class="hover-line-grow">Blog</a>
 		  </div>
           <div class="line-light-chapter"></div>
           <!-- <div class="editorial-chapter">Shopping</div> -->
@@ -227,8 +225,8 @@
           <div class="line-light-chapter"></div>
           <ul role="list" class="italic w-list-unstyled">
 			<li>
-              <a href="/contactme/" class="hover-line-grow w-inline-block">
-                <div></div>
+              <a href="/contactme/press" class="hover-line-grow w-inline-block">
+                <div>Press</div>
                 <div class="hover-line black"></div>
               </a>
             </li>
