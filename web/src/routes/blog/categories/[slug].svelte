@@ -1,4 +1,33 @@
 
+<script context="module">
+    import client from "../../../sanityClient";
+    import urlFor from '../../../sanityImageUrlBuilder'
+    
+    export async function preload({params}) {
+
+		const query = `*[_type == "category" && slug.current == $slug][0]{
+            ...,
+            mainImage{
+                ...,
+                asset->
+            },
+            'articles': *[_type == "post" and && references(^._id)]
+        }`;
+		const category = await client
+			.fetch(query)
+            .catch(err => this.error(500,err));
+        // category.forEach(category => {
+        //     category.url = 'blog/categories/' + category.slug.current //Create relative path link for category
+        // });
+        return {category};
+	};
+
+</script>
+
+<script>
+
+    export let category
+</script>
 
 <div class="border-white-on-page">
       <div class="body-linen"></div>
@@ -7,7 +36,7 @@
 <div class="content-section">
     <div class="container">
     <div class="container">
-        <h1 class="title-l margin-grid fade-in-1st"></h1>
+        <h1 class="title-l margin-grid fade-in-1st">{category.title}</h1>
     </div>
     <div class="w-layout-grid _2-columns-2-to-1">
         <div id="w-node-dd00ab3eedd4-626961c2" class="sticky-top-5vh">

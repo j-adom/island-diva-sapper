@@ -71,14 +71,11 @@
             <div>Journalism</div>
             <div class="hover-line"></div>
           </a>
-          <a id="w-node-25b34c6b2575-38fffad6" href="privacy-policy.html" class="link-white w-inline-block">
-            <div>Legal</div>
+          <a id="w-node-25b34c6b2575-38fffad6" href="/blog" class="link-white w-inline-block">
+            <div>Blog</div>
             <div class="hover-line"></div>
           </a>
-          <a id="w-node-61f7b98f3db8-38fffad6" href="template/styleguide.html" class="link-white w-inline-block">
-            <div>Style guide</div>
-            <div class="hover-line"></div>
-          </a>
+
 
         </div>
       </div>

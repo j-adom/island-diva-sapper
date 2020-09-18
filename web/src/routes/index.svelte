@@ -56,7 +56,7 @@
     <div class="z-10">
       <div class="section-hero-editorial">
         <div class="w-layout-grid grid-editorial-intro">
-          <div class="hero-image-editorial max-h-screen">
+          <div class="hero-image-editorial md:max-h-screen">
 							<Image {...about.mainImage} />
 		  </div>
           <div class="section-editorial-intro" style="background-color: rgb(233, 225, 218)">
@@ -65,7 +65,7 @@
               <div class="title-l fade-in-2nd">Danielle James.</div>
             </div>
             <div class="fade-in-3rd text-base">
-				<BlockContent blocks = {about.intro} {serializers} />
+				<BlockContent blocks={about.intro} {serializers} />
 			</div>
           </div>
          </div>	
@@ -85,7 +85,7 @@
                     <div style="font-size: 16px"><em>- Danielle James</em></div>
                   </div>
                   <div id="w-node-a6ae58f56070-9e6961c7">
-					<BlockContent blocks = {about.body} {serializers} />
+					<BlockContent blocks={about.body} {serializers} />
 				  </div>
                 </div>
             </div>

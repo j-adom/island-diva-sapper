@@ -25,6 +25,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition'
+	import Instagram from '../components/Instagram.svelte';
 	import Footer from '../components/Footer.svelte';
 	
 	export let siteInfo;
@@ -32,11 +33,10 @@
 	let	onLoad = false
 	
 	onMount(async () => {
-		setTimeout(() => onLoad = true, 50)
+		setTimeout(function() {onLoad = true}, 50)
 		
 	})
 
-	let open = false;
 </script>
 
 <style>
@@ -54,6 +54,7 @@
 	<main  in:fade class="layout" id='page'>
 		<div>
 			<slot></slot>
+			<Instagram />
 			<Footer links={siteInfo.links} description={siteInfo.description} />
 		</div>	
 	</main>

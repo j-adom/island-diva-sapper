@@ -1635,8 +1635,8 @@ blockquote {
   z-index: 5;
   overflow: hidden;
   width: 100%;
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   background-color: #fff;
 }
 
@@ -5602,7 +5602,7 @@ blockquote {
     padding: 20px;
   }
   .hero-image-editorial {
-    height: 70vh;
+    height: 50vh;
   }
   .cookie-bar {
     right: 40px;

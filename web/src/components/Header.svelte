@@ -1,6 +1,6 @@
 
 <div data-collapse="all" data-animation="default" data-duration="0" data-no-scroll="1" data-doc-height="1" role="banner" class="navbar w-nav">
-  <div class="navbar-container"><a href="/" class="brand w-nav-brand object-contain m-2"><img src="assets/images/logo-black.png" alt="" class="object-scale-down"></a>
+  <div class="navbar-container "><a href="/" class="brand w-nav-brand mt-2 pb-2 object-contain"><img src="assets/images/logo-black.png" alt="" class="h-full w-auto"></a>
     <div class="subnav-wrapper">
       <div class="w-layout-grid navbar-grid">
         <a id="w-node-b726e2004fc6-678324bc" data-w-id="c7aeb36b-75ab-8a0e-8d0e-b726e2004fc6" href="/" class="link-navbar w-inline-block">

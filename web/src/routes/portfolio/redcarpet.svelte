@@ -29,22 +29,19 @@
 <script>
     import PubListItem from '../../components/PubListItem.svelte';
     import Header from '../../components/Header.svelte';
-    import LibLoader from '../../components/LibLoader.svelte'
+    import { onMount } from 'svelte';
 
     export let media
     export let intro
 
     let galleryLoaded = false
 
-    function onLoaded() {
+    onMount(async () => {
         lightGallery(document.getElementById('gallery'), {
             thumbnail:true
         });
-    }
+    })
 </script>
-
-<LibLoader url="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.12/js/lightgallery-all.min.js"
-on:loaded="{onLoaded}" />
 
 <svelte:head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.12/css/lightgallery.css">
@@ -78,5 +75,11 @@ on:loaded="{onLoaded}" />
         </div> -->
     </div>
 </div>
+
+<style>
+    .content-section{
+        background-color: #fafaf3;
+    }
+</style>
 
 

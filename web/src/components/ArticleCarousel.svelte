@@ -4,7 +4,6 @@
     import { ChevronLeftIcon, ChevronRightIcon } from 'svelte-feather-icons'
     
     export let articleLinks
-    console.log(articleLinks)
 </script>
 <div class="section-instagram">
   <div class="instagram-padding">
