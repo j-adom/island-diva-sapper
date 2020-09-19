@@ -1,7 +1,7 @@
 
 <script context="module">
-    import client from "../../sanityClient";
-    import urlFor from '../../sanityImageUrlBuilder'
+    import client from "../sanityClient";
+    import urlFor from '../sanityImageUrlBuilder'
     
     export async function preload({params}) {
 
@@ -10,7 +10,8 @@
             mainImage{
                 ...,
                 asset->
-            }
+            },
+            'url': 'a'
         }`;
 		const categories = await client
 			.fetch(query)
@@ -18,6 +19,7 @@
         categories.forEach(category => {
             category.url = 'blog/categories/' + category.slug.current //Create relative path link for category
         });
+        console.log(categories)
         return {categories};
 	};
 
@@ -26,6 +28,9 @@
 <script>
 
     export let categories
+    categories.map(category => {
+            category.url = 'blog/categories/' + category.slug.current //Create relative path link for category
+    });
 </script>
 
  <div class="content-section">

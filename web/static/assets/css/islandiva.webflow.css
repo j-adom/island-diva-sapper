@@ -2274,7 +2274,7 @@ blockquote {
 .tooltip-image {
   position: fixed;
   left: 40px;
-  top: -12.5vw;
+  /* top: -12.5vw; */
   right: auto;
   bottom: auto;
   z-index: 0;

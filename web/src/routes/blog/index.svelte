@@ -26,6 +26,13 @@
                             asset->
                         }
                     }
+                },
+                'categories': *[_type == "category" && _createdAt > "2020"]{
+                    ...,
+                    mainImage{
+                        ...,
+                        asset->
+                    }
                 }
 			}`;
 		const query = filter + projection	
@@ -43,12 +50,12 @@
 <script>
     import Header from '../../components/Header.svelte';
     import ArticleCarousel from '../../components/ArticleCarousel.svelte';
+    import CategoryBox from '../../components/CategoryBox.svelte';
 	import Image from '../../components/Image.svelte'
 
 	// import { fly } from 'svelte/transition'
     
     export let blogHome
-    console.log(blogHome)
 
 </script>
 
@@ -148,3 +155,5 @@
         </div>
     </div>
 </div>  
+
+<CategoryBox categories={blogHome.categories}/>
