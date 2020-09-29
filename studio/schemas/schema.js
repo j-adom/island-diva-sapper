@@ -8,6 +8,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import author from './documents/author'
 import category from './documents/category'
 import post from './documents/post'
+import blogHome from './documents/blogHome'
 import siteSettings from './documents/siteSettings'
 import socialLinks from './documents/socialLinks'
 import about from './documents/about'
@@ -40,6 +41,7 @@ export default createSchema({
     category,
     author,
     socialLinks,
+    blogHome,
     mainImage,
     authorReference,
     bodyPortableText,

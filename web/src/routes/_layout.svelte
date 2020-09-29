@@ -2,6 +2,7 @@
     import client from "../sanityClient";
     
     export async function preload({params}) {
+		const { slug } = params;
         const filter = '*[_type == "siteSettings"][0]'
         const projection = `{
 			...,
@@ -17,6 +18,7 @@
 		const siteInfo = await client
 			.fetch(query)
 			.catch(err => this.error(500,err));
+		siteInfo.pg = slug
 		return {siteInfo};
 	};
 
@@ -27,10 +29,14 @@
 	import { fade } from 'svelte/transition'
 	import Instagram from '../components/Instagram.svelte';
 	import Footer from '../components/Footer.svelte';
+	import Header from '../components/Header.svelte';
+
 	
 	export let siteInfo;
 	let visible = true
 	let	onLoad = false
+
+	let pg = siteInfo.pg
 	
 	onMount(async () => {
 		setTimeout(function() {onLoad = true}, 50)
@@ -53,6 +59,9 @@
 {#if onLoad && visible}
 	<main  in:fade class="layout" id='page'>
 		<div>
+			{#if pg}
+				<Header />
+			{/if}
 			<slot></slot>
 			<Instagram />
 			<Footer links={siteInfo.links} description={siteInfo.description} />

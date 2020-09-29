@@ -1,14 +1,13 @@
+
 <script context="module">
     import client from "../../../sanityClient";
-	import urlFor from "../../../sanityImageUrlBuilder"
-	import BlockContent from "@movingbrands/svelte-portable-text";
-	import serializers from "../../../components/serializers";
-	import generateImage from "../../../generateImage";		
-
-	export async function preload({ params }) {
-        const { slug }  = params;
-        const filter = `*[_type == "post" && slug.current == $slug][0]`
-        const projection = `{
+    import urlFor from '../../../sanityImageUrlBuilder'
+    import BlockContent from "@movingbrands/svelte-portable-text";
+    import serializers from "../../../components/serializers";
+    
+    export async function preload({params}) {
+        const slug = params.slug;
+		const query = `*[_type == "post" && slug.current == $slug][0]{
         ...,
         authors[]->{name, image, slug},
         categories[0]->{title, slug},
@@ -16,25 +15,49 @@
 					...,
           asset->
         },
-        "articles": *[_type == "post" && featured == true][0..1]
-			}`;
-		const query = filter + projection			
+        "articles": *[_type == "post" && featured == true][0..1]{
+          ...,
+          authors[]->{
+            ...,
+            image{
+              ...,
+              asset->
+            }
+          },
+          mainImage{
+              ...,
+              asset->
+          }
+        } | order(publishedAt desc),
+        'cats': *[_type == "category" && _createdAt > "2020"]{
+            ...,
+            mainImage{
+                ...,
+                asset->
+            }
+        }
+			} `;
 		const post = await client
-			.fetch(query, { slug })
-			.catch(err => this.error(500,err));
-    post.mainImage = generateImage(post.mainImage)
-    post.articles[0].mainImage = generateImageImage(post.articles[0].mainImage)
-    post.articles[1].mainImage = generateImageImage(post.articles[1].mainImage)
-    
-		return { post }
+			.fetch(query, {slug})
+            .catch(err => this.error(500,err));
+        // post.forEach(post => {
+        //     post.url = 'blog/categories/' + post.slug.current //Create relative path link for post
+        // });
+      return {post};
 	};
 
 </script>
 
 <script>
     import Header from '../../../components/Header.svelte';
+    import Image from '../../../components/Image.svelte';
+    import CategoryBox from '../../../components/CategoryBox.svelte';
+
+    import { fly } from 'svelte/transition';
 
     export let post
+
+      console.log(post);
 
     const months = [
       'January',
@@ -62,10 +85,15 @@
     const postDate = formatDate(post.publishedAt)
     const art1Date = formatDate(post.articles[0].publishedAt)
     const art2Date = formatDate(post.articles[1].publishedAt)
-    const catLink = "blog/categories/" + post.categories[0].slug.current
+    const catLink = "blog/categories/" + post.categories.slug.current
     const art1Link = "blog/posts/" + post.articles[0].slug.current
     const art2Link = "blog/posts/" + post.articles[1].slug.current
 </script>
+
+<svelte:head>
+  <title>{post.title}</title>
+</svelte:head>
+
 
 <div class="border-white-on-page">
   <div class="body-linen"></div>
@@ -76,7 +104,8 @@
 <div class="content-section-space-desktop">
   <div class="w-layout-grid hero-grid">
     <div id="w-node-7e1409ad8b74-2a6961c5" class="bg-hero fade-in-6th"></div>
-    <div id="w-node-7e1409ad8b75-2a6961c5" class="image-size-hero fade-in-1st"><img src={urlFor(post.mainImage).url()} alt="" class="bg-image post-detail">
+    <div id="w-node-7e1409ad8b75-2a6961c5" class="image-size-hero fade-in-1st">
+      <img src={urlFor(post.mainImage).url()} alt="" class="bg-image post-detail">
       <div data-w-id="73ff716b-42ec-1be0-ec5c-7e1409ad8b77" style="display:block" class="image-cover-shape"></div>
     </div>
     <div id="w-node-7e1409ad8b78-2a6961c5" class="hero-block-spacing">
@@ -84,7 +113,7 @@
         <div class="category-wrapper fade-in-2nd">
           <div><em>Published in  </em></div>
           <a data-w-id="73ff716b-42ec-1be0-ec5c-7e1409ad8b7c" href={catLink} class="link-block w-inline-block">
-            <div>{post.categories[0].title}</div>
+            <div>{post.categories.title}</div>
             <div class="hover-line primary-2"></div>
           </a>
           <div><em> on  </em></div>
@@ -113,9 +142,6 @@
   <div class="cms-collection w-dyn-list">
     <div role="list" class="multi-image-grid w-dyn-items">
       <div role="listitem" class="w-dyn-item"><img src="" alt="" class="fade-in-1st"></div>
-    </div>
-    <div class="empty-state w-dyn-empty">
-      <div>No items found.</div>
     </div>
   </div>
   {#if post.body2}
@@ -177,10 +203,9 @@
             </a>
           </div>
         </div>
-        <div class="empty-state w-dyn-empty">
-          <div>No items found.</div>
-        </div>
       </div>
     </div>
   </div>
 </div>
+
+<CategoryBox categories={post.cats} />
