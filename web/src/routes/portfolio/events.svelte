@@ -29,7 +29,6 @@
 
 </script>
 
-<Header />
 
 <div class="border-white-on-page">
     <div class="body-linen"></div>

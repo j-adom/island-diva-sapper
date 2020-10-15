@@ -75,6 +75,10 @@
             <div>Blog</div>
             <div class="hover-line"></div>
           </a>
+          <a id="w-node-25b34c6b2575-38fffad6" href="/contactme" class="link-white w-inline-block">
+            <div>Contact</div>
+            <div class="hover-line"></div>
+          </a>
 
 
         </div>

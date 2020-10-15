@@ -48,7 +48,6 @@
 </script>
 
 <script>
-    import Header from '../../components/Header.svelte';
     import ArticleCarousel from '../../components/ArticleCarousel.svelte';
     import CategoryBox from '../../components/CategoryBox.svelte';
 	import Image from '../../components/Image.svelte'
@@ -60,7 +59,6 @@
 </script>
 
 
-<Header />
 
 <div class="border-white-on-page">
     <div class="body-linen"></div>

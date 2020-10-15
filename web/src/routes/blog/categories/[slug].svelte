@@ -27,7 +27,7 @@
                     asset->
                 }
             } ,
-            'categories': *[_type == "| order(publishedAt desc)category" && _createdAt > "2020"]{
+            'categories': *[_type == "category" && _createdAt > "2020"]{
                 ...,
                 mainImage{
                     ...,
@@ -47,8 +47,8 @@
 </script>
 
 <script>
-    import Header from '../../../components/Header.svelte';
     import CategoryBox from '../../../components/CategoryBox.svelte';
+    import IntersectionObserver from "../../../components/IntersectionObserver.svelte";
 
     import { stores } from '@sapper/app';
     const { page } = stores();
@@ -84,13 +84,15 @@
       const fullDate = `${monthName} ${date}, ${year}`
       return fullDate
     }
+
+    console.log(category)
+
 </script>
 
 <svelte:head>
   <title>{category.title}</title>
 </svelte:head>
 
-<Header />
 <div class="border-white-on-page">
       <div class="body-linen"></div>
 </div>
@@ -98,7 +100,9 @@
 <div class="content-section">
     <div class="container">
         <div class="container">
-            <h1 class="title-l margin-grid fade-in-1st">{category.title}</h1>
+            <IntersectionObserver let:intersecting once={true}>
+                <h1 class="title-l margin-grid fade-in-1st">{category.title}</h1>
+            </IntersectionObserver>
         </div>
         {#if posts.length}
             <div class="w-layout-grid _2-columns-2-to-1">

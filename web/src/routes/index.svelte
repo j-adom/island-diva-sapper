@@ -16,6 +16,10 @@
 				secondImage{
 					...,
 					asset->
+				},
+				'cats': *[_type == "category" && _createdAt > "2020"]{
+					title,
+					slug
 				}
 			}`;
 		const query = filter + projection			
@@ -140,7 +144,7 @@
 				<div class="hover-line black"></div>
 				</a>
 			</li>
-			<li>
+			<!-- <li>
 				<a href="/portfolio/hosting" class="hover-line-grow w-inline-block">
 				<div>Hosting</div>
 				<div class="hover-line black"></div>
@@ -157,80 +161,80 @@
 				<div>Speaking Engagements</div>
 				<div class="hover-line black"></div>
 				</a>
-			</li>
+			</li> -->
 		</ul>
     </div>
+	<!-- <div class="section-editorial-menu">
+		<div class="display-4">
+			<a href="/consulting/" class="hover-line-grow">Consulting</a>
+		</div>
+		<div class="line-light-chapter"></div>
+		<ul role="list" class="italic w-list-unstyled">
+			<li>
+			<a href="/consulting/services" class="hover-line-grow w-inline-block">
+				<div>Consulting Services</div>
+				<div class="hover-line black"></div>
+			</a>
+			</li>
+			<li>
+			<a href="/consulting/brand" class="hover-line-grow w-inline-block">
+				<div>Brand Consulting</div>
+				<div class="hover-line black"></div>
+			</a>
+			</li>
+			<li>
+			<a href="/consulting/image" class="hover-line-grow w-inline-block">
+				<div>Image/Style Consulting</div>
+				<div class="hover-line black"></div>
+			</a>
+			</li>
+		</ul>
+    </div> -->
+    <!-- <div class="section-editorial-menu">
+		<div class="display-4">
+		  	<a href="/brandwork/" class="hover-line-grow">Brand Work</a>
+		</div>
+        <div class="line-light-chapter"></div>
+          <!-- <div class="editorial-chapter">Shopping</div> -->
+        <!-- <ul role="list" class="italic w-list-unstyled"> -->
+			<!-- <li>
+              <a href="/consulting/image" class="hover-line-grow w-inline-block">
+                <div>Image/Style Consulting</div>
+                <div class="hover-line black"></div>
+              </a>
+            </li>
+            -->
+        <!-- </ul> -->
+	<!-- </div> --> 
 	<div class="section-editorial-menu">
 		<div class="display-4">
-		<a href="/consulting/" class="hover-line-grow">Consulting</a>
+			<a href="/blog/" class="hover-line-grow">Blog</a>
+		</div>
+        <div class="line-light-chapter"></div>
+          <!-- <div class="editorial-chapter">Shopping</div> -->
+		<ul role="list" class="italic w-list-unstyled">
+			{#each about.cats as cat}
+				<li>
+					<a href="/blog/categories/{cat.slug.current}" class="hover-line-grow w-inline-block">
+						<div>{cat.title}</div>
+						<div class="hover-line black"></div>
+					</a>
+				</li>
+			{/each}       
+        </ul>
+     </div>
+	<div class="section-editorial-menu">
+        <div class="display-4">
+		 	<a href="/contactme/" class="hover-line-grow">Contact Me</a>
+		</div>
+        <div class="line-light-chapter"></div>
+		<ul role="list" class="italic w-list-unstyled">
+			<!-- <li>
+				<a href="/contactme/press" class="hover-line-grow w-inline-block">
+					<div>Press</div>
+					<div class="hover-line black"></div>
+				</a>
+			</li> -->
+		</ul>
 	</div>
-	<div class="line-light-chapter"></div>
-	<ul role="list" class="italic w-list-unstyled">
-		<li>
-		<a href="/consulting/services" class="hover-line-grow w-inline-block">
-			<div>Consulting Services</div>
-			<div class="hover-line black"></div>
-		</a>
-		</li>
-		<li>
-		<a href="/consulting/brand" class="hover-line-grow w-inline-block">
-			<div>Brand Consulting</div>
-			<div class="hover-line black"></div>
-		</a>
-		</li>
-		<li>
-		<a href="/consulting/image" class="hover-line-grow w-inline-block">
-			<div>Image/Style Consulting</div>
-			<div class="hover-line black"></div>
-		</a>
-		</li>
-	</ul>
-      </div>
-        <div class="section-editorial-menu">
-           <div class="display-4">
-		  	<a href="/brandwork/" class="hover-line-grow">Brand Work</a>
-		  </div>
-          <div class="line-light-chapter"></div>
-          <!-- <div class="editorial-chapter">Shopping</div> -->
-          <ul role="list" class="italic w-list-unstyled">
-			<!-- <li>
-              <a href="/consulting/image" class="hover-line-grow w-inline-block">
-                <div>Image/Style Consulting</div>
-                <div class="hover-line black"></div>
-              </a>
-            </li>
-            -->
-          </ul>
-        </div>
-        <div class="section-editorial-menu">
-           <div class="display-4">
-		  	<a href="/blog/" class="hover-line-grow">Blog</a>
-		  </div>
-          <div class="line-light-chapter"></div>
-          <!-- <div class="editorial-chapter">Shopping</div> -->
-          <ul role="list" class="italic w-list-unstyled">
-			<!-- <li>
-              <a href="/consulting/image" class="hover-line-grow w-inline-block">
-                <div>Image/Style Consulting</div>
-                <div class="hover-line black"></div>
-              </a>
-            </li>
-            -->
-          </ul>
-        </div>
-		<div class="section-editorial-menu">
-          <div class="display-4">
-		  	<a href="/contactme/" class="hover-line-grow">Contact Me</a>
-		  </div>
-          <div class="line-light-chapter"></div>
-          <ul role="list" class="italic w-list-unstyled">
-			<li>
-              <a href="/contactme/press" class="hover-line-grow w-inline-block">
-                <div>Press</div>
-                <div class="hover-line black"></div>
-              </a>
-            </li>
-           
-          </ul>
-      </div>
 </main>

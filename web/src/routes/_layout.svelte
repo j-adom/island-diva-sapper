@@ -5,12 +5,17 @@
 		const { slug } = params;
         const filter = '*[_type == "siteSettings"][0]'
         const projection = `{
-			...,
 			'header':{
-					
-					'bgImage':header.bg_img.asset->url,
-					'logo': header.logo_img.asset->url
-				},
+				'categories': *[_type == "category" && _createdAt > "2020"]{
+					...,
+					mainImage{
+						...,
+						asset->
+					}
+				},	
+				'bgImage':header.bg_img.asset->url,
+				'logo': header.logo_img.asset->url
+			},
 			...
 			}`;
 					
@@ -35,8 +40,9 @@
 	export let siteInfo;
 	let visible = true
 	let	onLoad = false
+	let open = false
 
-	let pg = siteInfo.pg
+	let pg = siteInfo.pg 
 	
 	onMount(async () => {
 		setTimeout(function() {onLoad = true}, 50)
@@ -59,9 +65,8 @@
 {#if onLoad && visible}
 	<main  in:fade class="layout" id='page'>
 		<div>
-			{#if pg}
-				<Header />
-			{/if}
+				<Header header={siteInfo.header} {pg} />
+
 			<slot></slot>
 			<Instagram />
 			<Footer links={siteInfo.links} description={siteInfo.description} />

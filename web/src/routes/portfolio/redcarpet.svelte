@@ -48,7 +48,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.12/js/lightgallery-all.min.js" on:load={galleryLoaded}></script>
 
 </svelte:head>
-<Header />
 
 <div class="border-white-on-page">
     <div class="body-linen"></div>

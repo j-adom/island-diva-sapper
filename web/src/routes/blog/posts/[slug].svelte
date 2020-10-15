@@ -49,7 +49,6 @@
 </script>
 
 <script>
-    import Header from '../../../components/Header.svelte';
     import Image from '../../../components/Image.svelte';
     import CategoryBox from '../../../components/CategoryBox.svelte';
 
@@ -99,7 +98,6 @@
   <div class="body-linen"></div>
 </div>
 
-<Header />
 
 <div class="content-section-space-desktop">
   <div class="w-layout-grid hero-grid">
