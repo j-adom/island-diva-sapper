@@ -6,7 +6,7 @@
 	import generateImage from "../generateImage";		
 
 	export async function preload({params}) {
-        const filter = `*[_id == "about"][0]`
+        const filter = `*[_id == "siteHome"][0]`
         const projection = `{
 				...,
 				mainImage{
@@ -38,7 +38,6 @@
 	import Image from '../components/Image.svelte'
 
 	export let about
-	console.log(about.mainImage)
 </script>
 <style>
 </style>

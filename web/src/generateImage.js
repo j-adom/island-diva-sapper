@@ -9,7 +9,7 @@ function generateImage(image) {
 			getCropFactor(image.crop) * image.asset.metadata.dimensions.aspectRatio
 	} else {
 		// else, just set aspectRatio equal to the original image’s
-		aspectRatio = image.asset.metadata.dimensions.aspectRatio
+		aspectRatio = image.asset.metadata.dimensions.aspectRatio 
 	}
 	const caption = image.caption
 	const hotspot = image.hotspot

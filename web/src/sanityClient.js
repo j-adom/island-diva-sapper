@@ -5,6 +5,7 @@ const { projectId, dataset } = api
 const client = sanityClient({
   projectId,
   dataset,
+  // apiVersion: '2021-03-25', // use a UTC date string
   useCdn: true
 })
 

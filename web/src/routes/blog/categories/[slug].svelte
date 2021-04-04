@@ -1,7 +1,6 @@
 
 <script context="module">
     import client from "../../../sanityClient";
-    import urlFor from '../../../sanityImageUrlBuilder'
     import BlockContent from "@movingbrands/svelte-portable-text";
 	import serializers from "../../../components/serializers";
     
@@ -49,10 +48,11 @@
 <script>
     import CategoryBox from '../../../components/CategoryBox.svelte';
     import IntersectionObserver from "../../../components/IntersectionObserver.svelte";
-
+    import urlFor from '../../../sanityImageUrlBuilder'
+    import { fly } from 'svelte/transition'
     import { stores } from '@sapper/app';
     const { page } = stores();
-    $: console.log($page.params);
+    // $: console.log($page.params);
     
     export let category
     let posts = category.posts
@@ -130,7 +130,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div data-w-id="7a0255d2-0be4-a968-2d7a-dd00ab3eede5" style="display:block" class="image-cover-shape"></div>
                             </a>
                         </div>
                     </div>

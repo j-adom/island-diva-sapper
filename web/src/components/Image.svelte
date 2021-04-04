@@ -49,9 +49,7 @@
       {sizes}
       {alt}
     />
- 
-	
-
+ 	
 	<noscript>
 		<img {src} {srcset} {sizes} {alt} />
 	</noscript>

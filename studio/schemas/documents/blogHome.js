@@ -70,14 +70,14 @@ export default {
             type: 'object',
             fields: [
               {
-                type: "image",
+                type: "mainImage",
                 name: "smallImage",
                 title: "Samll Image",
                 description: "The image displayed on the left side.",
                 validation: null
               },
               {
-                  type: "image",
+                  type: "mainImage",
                   name: "largeImage",
                   title: "Large Image",
                   description: "The image displayed on the right side.",

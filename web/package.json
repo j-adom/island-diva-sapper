@@ -17,8 +17,8 @@
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.14.0",
     "@fullhuman/postcss-purgecss": "^2.3.0",
-    "@sanity/client": "^1.149.18",
-    "@sanity/image-url": "^0.140.19",
+    "@sanity/client": "^2.7.1",
+    "@sanity/image-url": "^0.140.22",
     "compression": "^1.7.4",
     "groq": "^0.147.8",
     "lazysizes": "^5.2.2",

@@ -56,7 +56,7 @@
 
     export let post
 
-      console.log(post);
+      // console.log(post);
 
     const months = [
       'January',
@@ -104,7 +104,7 @@
     <div id="w-node-7e1409ad8b74-2a6961c5" class="bg-hero fade-in-6th"></div>
     <div id="w-node-7e1409ad8b75-2a6961c5" class="image-size-hero fade-in-1st">
       <img src={urlFor(post.mainImage).url()} alt="" class="bg-image post-detail">
-      <div data-w-id="73ff716b-42ec-1be0-ec5c-7e1409ad8b77" style="display:block" class="image-cover-shape"></div>
+      <!-- <div data-w-id="73ff716b-42ec-1be0-ec5c-7e1409ad8b77" style="display:block" class="image-cover-shape"></div> -->
     </div>
     <div id="w-node-7e1409ad8b78-2a6961c5" class="hero-block-spacing">
       <div class="w-layout-grid thumb-info-large-grid">
@@ -162,7 +162,7 @@
             <a data-w-id="de9fb320-1c07-71a1-9ee1-52a9bd0b7d05" href={art1Link} class="cms-link w-inline-block">
               <div class="w-layout-grid thumb-info-small-grid">
                 <div class="image-4-to-3 fade-in-1st"><img data-w-id="de9fb320-1c07-71a1-9ee1-52a9bd0b7d08" style="opacity:0;-webkit-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" src={urlFor(post.articles[0].mainImage).width(200).height(200).url()} alt="" class="bg-image">
-                  <div data-w-id="de9fb320-1c07-71a1-9ee1-52a9bd0b7d09" style="display:block" class="image-cover-shape"></div>
+                  <!-- <div data-w-id="de9fb320-1c07-71a1-9ee1-52a9bd0b7d09" style="display:block" class="image-cover-shape"></div> -->
                 </div>
                 <div class="category-wrapper fade-in-1st">
                   <div class="caption">{post.articles[0].categories.title}</div>
@@ -173,7 +173,7 @@
                   <div class="title-xs fade-in-1st">{post.articles[0].title}</div>
                   <div class="author-wrapper-italic fade-in-1st">
                     <div>by </div>
-                    <div>{post.articles[0].authors.name}</div>
+                    <div>{post.articles[0].authors[0].name}</div>
                   </div>
                 </div>
               </div>
@@ -183,7 +183,7 @@
             <a data-w-id="de9fb320-1c07-71a1-9ee1-52a9bd0b7d05" href={art2Link} class="cms-link w-inline-block">
               <div class="w-layout-grid thumb-info-small-grid">
                 <div class="image-4-to-3 fade-in-1st"><img data-w-id="de9fb320-1c07-71a1-9ee1-52a9bd0b7d08" style="opacity:0;-webkit-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1.05, 1.05, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" src={urlFor(post.articles[1].mainImage).width(200).height(200).url()} alt="" class="bg-image">
-                  <div data-w-id="de9fb320-1c07-71a1-9ee1-52a9bd0b7d09" style="display:block" class="image-cover-shape"></div>
+                  <!-- <div data-w-id="de9fb320-1c07-71a1-9ee1-52a9bd0b7d09" style="display:block" class="image-cover-shape"></div> -->
                 </div>
                 <div class="category-wrapper fade-in-1st">
                   <div class="caption">{post.articles[1].categories.title}</div>
@@ -194,7 +194,7 @@
                   <div class="title-xs fade-in-1st">{post.articles[1].title}</div>
                   <div class="author-wrapper-italic fade-in-1st">
                     <div>by </div>
-                    <div>{post.articles[1].authors.name}</div>
+                    <div>{post.articles[1].authors[0].name}</div>
                   </div>
                 </div>
               </div>

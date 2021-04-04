@@ -43,6 +43,7 @@
 </div >
 {/if}
 
+{#if sidebar}
 <aside class="navigation-menu" class:sidebar>
   <div class="menu-wrapper">
     <div class="w-layout-grid grid-navigation">
@@ -98,7 +99,7 @@
     </button>
   </div>
 </aside>
-
+{/if}
 <style>
 	aside {
 		top: -100%;

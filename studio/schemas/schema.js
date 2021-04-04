@@ -12,7 +12,7 @@ import post from './documents/post'
 import blogHome from './documents/blogHome'
 import siteSettings from './documents/siteSettings'
 import socialLinks from './documents/socialLinks'
-import about from './documents/about'
+import home from './documents/home'
 import articleLink from './documents/articleLink'
 import imageGallery from './documents/imageGallery'
 import publication from './documents/publication'
@@ -38,7 +38,7 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
     siteSettings,
-    about,
+    home,
     post,
     category,
     author,

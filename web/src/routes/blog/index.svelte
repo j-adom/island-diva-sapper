@@ -1,13 +1,12 @@
 <script context="module">
     import client from "../../sanityClient";
-    import urlFor from '../../sanityImageUrlBuilder'
     import generateImage from '../../generateImage'
     import BlockContent from "@movingbrands/svelte-portable-text";
     import serializers from "../../components/serializers";
     
     export async function preload({params}) {
 
-        const filter = `*[_id == "bloghome"][0]`
+        const filter = `*[_id == "blogHome"][0]`
         const projection = `{
 				...,
 				mainImage{
@@ -62,7 +61,7 @@
 <div class="border-white-on-page">
     <div class="body-linen"></div>
 </div>
-<!-- <div class="content-section-space-desktop">
+<div class="content-section-space-desktop">
     <div class="w-layout-grid hero-grid">
         <div id="w-node-5c6ec26be52c-6e6961cc" class="bg-hero fade-in-6th"></div>
         <div id="w-node-5c6ec26be52d-6e6961cc" class="image-size-hero fade-in-1st">
@@ -83,15 +82,15 @@
             </div>
         </div>
     </div>  
-</div> -->
+</div>
 
 <div class="content-section">
     <div class="w-layout-grid _5-columns">
         <div id="w-node-54f1722d5666-516961ce">
             <h2 class="caption text-black fade-in-1st">Values</h2>
             <div class="margin">
-            <div class="title-m fade-in-1st">{blogHome.section2.lead1}<br></div>
-            <div class="title-m fade-in-1st"><em>{blogHome.section2.lead2}</em></div>
+                <div class="title-m fade-in-1st">{blogHome.section2.lead1}<br></div>
+                <div class="title-m fade-in-1st"><em>{blogHome.section2.lead2}</em></div>
             </div>
             <div class="fade-in-1st">
                 <BlockContent blocks={blogHome.section2.section2body} {serializers} />   
