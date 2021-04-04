@@ -7,6 +7,7 @@
 	export let src
 	export let srcset
 	export let alt
+	export let hotspot
 	export let sizes = 'auto' // 'auto' only works when using `lazysizes`
 
 	let padding_bottom_percentage = 100 / aspectRatio + '%'
@@ -34,6 +35,7 @@
 		height: 100%;
 		-o-object-fit: cover;
 		object-fit: cover;
+		object-position: var(--object-position)
 	}
 </style>
 

@@ -30,12 +30,17 @@
 </script>
 
 <script>
-	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition'
 	import Instagram from '../components/Instagram.svelte';
 	import Footer from '../components/Footer.svelte';
 	import Header from '../components/Header.svelte';
-
+    import { stores } from "@sapper/app"
+    import { derived } from 'svelte/store';
+    
+    const { preloading } = stores();
+    const delayedPreloading = derived(preloading, (currentPreloading, set) => {
+        setTimeout(() => set(currentPreloading), 250);
+    });
 	
 	export let siteInfo;
 	let visible = true
@@ -44,10 +49,10 @@
 
 	let pg = siteInfo.pg 
 	
-	onMount(async () => {
-		setTimeout(function() {onLoad = true}, 50)
+	// onMount(async () => {
+	// 	setTimeout(function() {onLoad = true}, 50)
 		
-	})
+	// })
 
 </script>
 
@@ -62,15 +67,13 @@
 		display: none;
 	} */
 </style>
-{#if onLoad && visible}
-	<main  in:fade class="layout" id='page'>
-		<div>
-				<Header header={siteInfo.header} {pg} />
+<main  in:fade class="layout" id='page'>
+	<Header header={siteInfo.header} {pg} />
+	<slot></slot>
+	<Instagram />
+	<Footer links={siteInfo.links} description={siteInfo.description} />
+</main>
 
-			<slot></slot>
-			<Instagram />
-			<Footer links={siteInfo.links} description={siteInfo.description} />
-		</div>	
-	</main>
+{#if $preloading && $delayedPreloading} <!-- Show Loading spinner -->
+    <div class="preloader"><img src="assets/images/25_125.gif" alt="" class="preloader-image"></div>
 {/if}
-<div class="preloader"><img src="assets/images/25_125.gif" alt="" class="preloader-image"></div>

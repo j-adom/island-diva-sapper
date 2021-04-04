@@ -1,9 +1,9 @@
 import {format} from 'date-fns'
 
 export default {
-  name: 'about',
+  name: 'siteHome',
   type: 'document',
-  title: 'About Me',
+  title: 'Home Page',
   fields: [
     {
       name: 'title',

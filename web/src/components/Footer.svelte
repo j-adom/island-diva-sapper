@@ -53,7 +53,10 @@
         </div>
       </div>
       <div id="w-node-06ea38fffad7-38fffad6" class="container-small left">
-        <div class="w-layout-grid thumb-info-large-grid"><img src="assets/images/logo.png" alt="" class="logo-128px">
+        <div class="w-layout-grid thumb-info-large-grid">
+        <a href="/">
+          <img src="assets/images/logo.png" alt="" class="logo-128px">
+        </a>
           <div class="lead">{description}</div>
         </div>
       </div>

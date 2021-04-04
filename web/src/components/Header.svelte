@@ -50,9 +50,11 @@
         <div class="caption">BROWSE Topics<br></div>
         <div class="cms-collection w-dyn-list">
           <div role="list" class="cms-tag-list-search w-dyn-items">
-            {#each cats as cat}
+            {#each cats as cat, i}
               <div id="w-node-eb28a2104376-109e35ba" data-w-id="46ff58e0-d0b0-4787-5196-eb28a2104376" role="listitem" class="tags-block-search w-dyn-item">
-                <div class="tags-dot">•</div>
+                {#if i > 0}
+                  <div class="tags-dot">•</div>
+                {/if}
                 <img src={urlFor(cat.mainImage).width(200).url()} alt="" class="tooltip-image navi">
                 <a on:click={() => sidebar = !sidebar} data-w-id="46ff58e0-d0b0-4787-5196-eb28a2104379" href={cat.url} class="cms-link-white w-inline-block">
                   <div>{cat.title}</div>
@@ -87,9 +89,9 @@
         <input type="search" class="text-field-filled w-input" maxlength="256" name="query" placeholder="Search…" id="search" required="">
         <input on:click={() => sidebar = !sidebar} type="submit" value="Search" class="search-button w-button">
       </form> -->
-      <div class="w-layout-grid thumb-info-small-grid">
+      <!-- <div class="w-layout-grid thumb-info-small-grid">
         <div class="align-center">Dummy Media A/S, Example Street 34<br>DK-1147 København K<br></div>
-      </div>
+      </div> -->
     </div>
     <button data-w-id="bd3fd343-2fd5-6d46-8cbc-97ff109e35ec" on:click={() => sidebar = !sidebar} class="close-search w-inline-block">
       <img src="images/close-24px.svg" alt="Close Menu" class="close-button-label">

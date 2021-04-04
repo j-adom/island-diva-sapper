@@ -26,9 +26,10 @@
 		const about = await client
 			.fetch(query)
 			.catch(err => this.error(500,err));
+		let img = about.mainImage
 		about.mainImage = generateImage(about.mainImage)
 		about.secondImage = generateImage(about.secondImage)
-		return { about }
+		return { about, img }
 	};
 
 </script>
@@ -37,6 +38,7 @@
 	import Image from '../components/Image.svelte'
 
 	export let about
+	console.log(about.mainImage)
 </script>
 <style>
 </style>

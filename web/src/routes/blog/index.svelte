@@ -48,7 +48,6 @@
 </script>
 
 <script>
-    import ArticleCarousel from '../../components/ArticleCarousel.svelte';
     import CategoryBox from '../../components/CategoryBox.svelte';
 	import Image from '../../components/Image.svelte'
 
@@ -63,7 +62,7 @@
 <div class="border-white-on-page">
     <div class="body-linen"></div>
 </div>
-<div class="content-section-space-desktop">
+<!-- <div class="content-section-space-desktop">
     <div class="w-layout-grid hero-grid">
         <div id="w-node-5c6ec26be52c-6e6961cc" class="bg-hero fade-in-6th"></div>
         <div id="w-node-5c6ec26be52d-6e6961cc" class="image-size-hero fade-in-1st">
@@ -84,7 +83,8 @@
             </div>
         </div>
     </div>  
-</div>
+</div> -->
+
 <div class="content-section">
     <div class="w-layout-grid _5-columns">
         <div id="w-node-54f1722d5666-516961ce">

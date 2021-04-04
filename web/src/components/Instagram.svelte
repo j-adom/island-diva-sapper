@@ -26,6 +26,8 @@
     const res = await new InstagramFeed({
         'username': 'theislandiva',
         'items' : 8,
+        'lazy_load' : true,
+        'host': 'https://images' + ~~(Math.random() * 3333) + '-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=https://www.instagram.com/',
         'callback': function(data){
         instaJSON = data
         instaJSON.edge_owner_to_timeline_media.edges.forEach((element,i) => {

@@ -12,20 +12,20 @@ function generateImage(image) {
 		aspectRatio = image.asset.metadata.dimensions.aspectRatio
 	}
 	const caption = image.caption
+	const hotspot = image.hotspot
 	// LQIP
 	const placeholder = image.asset.metadata.lqip
 
 	// src
-	const src = urlFor(image).url()
+	const src = image.hotspot ? urlFor(image).auto('format').focalPoint(hotspot.x,hotspot.y).fit('min').url() : urlFor(image).auto('format').fit('min').url()
 
 	// srcset
-
 	// Change these widths as you need
-	const widthsPreset = [640, 768, 1024, 1366, 1600, 1920, 2560]
+	const widthsPreset = [640, 768, 1024, 1366]
 
 	const srcset = widthsPreset
 		// Make srcset url for each of the above widths
-		.map((w) => urlFor(image).width(w).url() + ' ' + w + 'w')
+		.map((w) => image.hotspot ? urlFor(image).width(w).focalPoint(hotspot.x,hotspot.y).auto('format').fit('min').url() + ' ' + w + 'w' : urlFor(image).width(w).auto('format').fit('min').url() + ' ' + w + 'w')
 		.join(',')
 
     const alt = image.alt;
